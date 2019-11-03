@@ -33,6 +33,8 @@ class EventsController extends Controller
     {
         $event = Event::create($request->all());
 
+        $event->createRecurringEvents();
+
         return redirect()->route('admin.events.index');
     }
 
