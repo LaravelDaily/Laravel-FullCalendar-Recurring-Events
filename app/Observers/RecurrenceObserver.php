@@ -89,6 +89,10 @@ class RecurrenceObserver
      */
     public function deleted(Event $event)
     {
-        //
+        if($event->events()->exists())
+        {
+            $events = $event->events()->pluck('id');
+            Event::whereIn('id', $events)->delete();
+        }
     }
 }

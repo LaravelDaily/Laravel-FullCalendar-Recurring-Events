@@ -17,7 +17,8 @@ class EventsController extends Controller
     {
         abort_if(Gate::denies('event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $events = Event::all();
+        $events = Event::withCount('events')
+            ->get();
 
         return view('admin.events.index', compact('events'));
     }
