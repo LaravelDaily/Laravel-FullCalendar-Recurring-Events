@@ -67,38 +67,4 @@ class Event extends Model
     {
         return $this->belongsTo(Event::class, 'event_id');
     }
-
-    public function createRecurringEvents()
-    {
-        $recurrences = [
-            'daily'     => [
-                'times'     => 365,
-                'function'  => 'addDay'
-            ],
-            'weekly'    => [
-                'times'     => 52,
-                'function'  => 'addWeek'
-            ],
-            'monthly'    => [
-                'times'     => 12,
-                'function'  => 'addMonth'
-            ]
-        ];
-        $startTime = Carbon::parse($this->start_time);
-        $endTime = Carbon::parse($this->end_time);
-        $recurrence = $recurrences[$this->recurrence] ?? null;
-
-        if($recurrence)
-            for($i = 0; $i < $recurrence['times']; $i++)
-            {
-                $startTime->{$recurrence['function']}();
-                $endTime->{$recurrence['function']}();
-                $this->events()->create([
-                    'name'          => $this->name,
-                    'start_time'    => $startTime,
-                    'end_time'      => $endTime,
-                    'recurrence'    => $this->recurrence,
-                ]);
-            }
-    }
 }

@@ -33,8 +33,6 @@ class EventsController extends Controller
     {
         $event = Event::create($request->all());
 
-        $event->createRecurringEvents();
-
         return redirect()->route('admin.events.index');
     }
 
@@ -42,7 +40,8 @@ class EventsController extends Controller
     {
         abort_if(Gate::denies('event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $event->load('event');
+        $event->load('event')
+            ->loadCount('events');
 
         return view('admin.events.edit', compact('event'));
     }
