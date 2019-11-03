@@ -52,6 +52,16 @@
                     </ul>
                 </li>
             @endcan
+            @can('event_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.events.index") }}" class="nav-link {{ request()->is('admin/events') || request()->is('admin/events/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-calendar nav-icon">
+
+                        </i>
+                        {{ trans('cruds.event.title') }}
+                    </a>
+                </li>
+            @endcan
             <li class="nav-item">
                 <a href="{{ route("admin.systemCalendar") }}" class="nav-link {{ request()->is('admin/system-calendar') || request()->is('admin/system-calendar/*') ? 'active' : '' }}">
                     <i class="nav-icon fa-fw fas fa-calendar">
