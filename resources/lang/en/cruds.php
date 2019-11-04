@@ -66,7 +66,7 @@ return [
         ],
     ],
     'event'          => [
-        'title'          => 'Events',
+        'title'          => 'All Events',
         'title_singular' => 'Event',
         'fields'         => [
             'id'                => 'ID',

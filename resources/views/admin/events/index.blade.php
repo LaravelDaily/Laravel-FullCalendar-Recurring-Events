@@ -85,7 +85,7 @@
                                 @can('event_delete')
                                     <form action="{{ route('admin.events.destroy', $event->id) }}" 
                                         method="POST" 
-                                        onsubmit="return confirm('{{ $event->events_count ? 'Do you want to delete future recurring events, too?' : trans('global.areYouSure') }}');" style="display: inline-block;"
+                                        onsubmit="return confirm('{{ $event->events_count || $event->event ? 'Do you want to delete future recurring events, too?' : trans('global.areYouSure') }}');" style="display: inline-block;"
                                     >
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -141,7 +141,7 @@
 @endcan
 
   $.extend(true, $.fn.dataTable.defaults, {
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 100,
   });
   $('.datatable-Event:not(.ajaxTable)').DataTable({ buttons: dtButtons })

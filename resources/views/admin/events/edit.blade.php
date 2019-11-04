@@ -10,7 +10,7 @@
         <form action="{{ route("admin.events.update", [$event->id]) }}" 
             method="POST" 
             enctype="multipart/form-data" 
-            @if($event->events_count) onsubmit="return confirm('Do you want to apply these changes to all future recurring events, too?');" @endif
+            @if($event->events_count || $event->event) onsubmit="return confirm('Do you want to apply these changes to all future recurring events, too?');" @endif
         >
             @csrf
             @method('PUT')

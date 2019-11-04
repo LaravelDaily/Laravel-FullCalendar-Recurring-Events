@@ -67,4 +67,11 @@ class Event extends Model
     {
         return $this->belongsTo(Event::class, 'event_id');
     }
+
+    public function saveQuietly()
+    {
+        return static::withoutEvents(function () {
+            return $this->save();
+        });
+    }
 }

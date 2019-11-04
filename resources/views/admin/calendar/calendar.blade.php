@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 @section('content')
+@can('event_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route("admin.events.create") }}">
+                {{ trans('global.add') }} {{ trans('cruds.event.title_singular') }}
+            </a>
+        </div>
+    </div>
+@endcan
 <h3 class="page-title">{{ trans('global.systemCalendar') }}</h3>
 <div class="card">
     <div class="card-header">
