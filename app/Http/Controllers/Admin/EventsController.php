@@ -32,7 +32,7 @@ class EventsController extends Controller
 
     public function store(StoreEventRequest $request)
     {
-        $event = Event::create($request->all());
+        Event::create($request->all());
 
         return redirect()->route('admin.systemCalendar');
     }
@@ -51,7 +51,7 @@ class EventsController extends Controller
     {
         $event->update($request->all());
 
-        return redirect()->route('admin.events.index');
+        return redirect()->route('admin.systemCalendar');
     }
 
     public function show(Event $event)

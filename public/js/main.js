@@ -23,7 +23,8 @@ $(document).ready(function () {
   $('.datetime').datetimepicker({
     format: 'YYYY-MM-DD HH:mm:ss',
     locale: 'en',
-    sideBySide: true
+    sideBySide: true,
+    stepping: 30
   })
 
   $('.timepicker').datetimepicker({
